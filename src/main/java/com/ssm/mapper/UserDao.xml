@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.UserDao">
+
+<select id="SearchUser" resultType="java.util.HashMap">
+select id,mark
+from user
+where 
+id=#{id}
+and password=#{password}
+</select>
+
+<select id="SearchIfExist" resultType="String">
+select id
+from user
+where
+id=#{id}
+</select>
+
+
+<insert id="AddStu" >
+insert into user(id,name,password,mark)
+value(#{id},#{name},#{password},"0")
+</insert>
+
+<update id="ChangePassword">
+update user
+set password=#{password}
+where
+id=#{id}
+and name=#{name}
+</update>
+</mapper>
