@@ -66,14 +66,11 @@ p {
 					</thead>
 					<tbody>
 						<tr ng-repeat="record in page.datas">
-							<td class="col-md-1">{{record.submitId}}</td>
-							<td class="col-md-1">{{record.submitProblemId}}</td>
-							<td class="col-md-2">{{record.submitTime |
-								stringDateFormat:'yyyy-MM-dd HH:mm:ss' }}</td>
-							<td class="col-md-2">{{record.details | omitDisplay : 10}}</td>
-							<td class="col-md-1">{{record.isAccepted == true ? "通过" :
-								"未通过"}}</td>
-							<td class="col-md-1">{{record.score}}</td>
+							<td class="col-md-1">{{record.problem_id}}</td>
+							<td class="col-md-1">{{record.problem_name}}</td>
+							<td class="col-md-1">{{record.submit_date |
+								stringDateFormat:'yyyy-MM-dd ' }}</td>
+							<td class="col-md-1">{{record.result}}</td>
 							<td class="col-md-1">
 								<button class="btn btn-success " type="button"
 									ng-click="detail($index)">详情</button>

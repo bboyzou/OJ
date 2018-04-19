@@ -1,15 +1,18 @@
 package com.ssm.pojo;
 
 public class TestData {
-	private String subname;
+	private String problem_id;
 	private String data;
 
-	public String getSubname() {
-		return subname;
+	public TestData(){
+		
+	}
+	public String getProblem_id() {
+		return problem_id;
 	}
 
-	public void setSubname(String subname) {
-		this.subname = subname;
+	public void setSubname(String problem_id) {
+		this.problem_id = problem_id;
 	}
 
 	public String getData() {
@@ -18,10 +21,6 @@ public class TestData {
 
 	public void setData(String data) {
 		this.data = data;
-	}
-
-	public TestData() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

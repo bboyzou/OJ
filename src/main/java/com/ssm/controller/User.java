@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ssm.service.UserCount;
 import com.ssm.serviceimpl.UserCountImpl;
 //登陆，注册，忘记密码分发
 @Controller
 public class User {
 	@Autowired
-	private UserCountImpl userCountImpl;
+	private UserCount userCount;
 	public User() {
 	}
 	@RequestMapping(value="/log")
@@ -23,7 +24,7 @@ public class User {
     		) {
 		System.out.println("收到登陆请求："+id);
 		Map<String, String> map=new HashMap<String, String>();
-		map=userCountImpl.ifLog(id, password);
+		map=userCount.ifLog(id, password);
         String myid=map.get("id");
         System.out.println(myid);
         if(myid!=null){
@@ -42,7 +43,7 @@ public class User {
     		@RequestParam("password2") String password2
     		) {
 		System.out.println(id+" "+name+" "+password+" "+password2+" ");
-        boolean flag=userCountImpl.Regist(id, name,password, password2);
+        boolean flag=userCount.Regist(id, name,password, password2);
         if(flag) return "index2";
         else{
         	return "fail";
@@ -54,7 +55,7 @@ public class User {
     		@RequestParam("password") String password,
     		@RequestParam("password2") String password2
     		) {
-        boolean flag=userCountImpl.ChangePassword(id, name, password,password2);
+        boolean flag=userCount.ChangePassword(id, name, password,password2);
         if(flag) return "index2";
         else{
         	return "fail";

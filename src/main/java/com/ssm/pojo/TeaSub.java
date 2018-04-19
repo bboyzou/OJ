@@ -1,36 +1,38 @@
 package com.ssm.pojo;
 
 public class TeaSub {
-	private String sid;
-	private String subname;
-	private String contend;// 题目的具体内容
-
-	public String getSid() {
-		return sid;
+	private String tid;
+	private String problem_id;
+	private String problem_name;
+	public TeaSub(){
+		
 	}
-
-	public void setSid(String sid) {
-		this.sid = sid;
+	public String getTid() {
+		return tid;
 	}
-
-	public String getSubname() {
-		return subname;
+	public void setTid(String tid) {
+		this.tid = tid;
 	}
-
-	public void setSubname(String subname) {
-		this.subname = subname;
+	public String getProblem_id() {
+		return problem_id;
 	}
-
-	public String getContend() {
-		return contend;
+	public void setProblem_id(String problem_id) {
+		this.problem_id = problem_id;
 	}
-
-	public void setContend(String contend) {
-		this.contend = contend;
+	public String getProblem_name() {
+		return problem_name;
 	}
-
-	public TeaSub() {
-		// TODO Auto-generated constructor stub
+	public void setProblem_name(String problem_name) {
+		this.problem_name = problem_name;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	private String content;
+
+	
 
 }
