@@ -31,9 +31,25 @@ public class StuDoImpl implements StuDo {
 		return stuDoSubDao.SearchAllDidSubInfo(user_id);
 	}
 
-	public List<AllSubInfo> getAllNotDidSubInfo(String user_id) {
+	public List<AllSubInfo> getAllNotDidSubInfo() {
 		// TODO Auto-generated method stub
-		return stuDoSubDao.SearchAllDidSubInfo(user_id);
+		session=request.getSession();
+		String user_id=(String)session.getAttribute("id");
+		return stuDoSubDao.SearchAllNotDidSubInfo(user_id);
+	}
+
+	public boolean AddNewSub() {
+		// TODO Auto-generated method stub
+		session=request.getSession();
+		String user_id=(String)session.getAttribute("id");
+		boolean flag1=stuDoSubDao.AddNewSubInStuCooseSub(user_id);
+		boolean flag2=stuDoSubDao.AddNewSubInStuWork(user_id);
+		return (flag1&&flag2);
+	}
+
+	public boolean SubmitCode() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

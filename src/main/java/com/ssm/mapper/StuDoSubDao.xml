@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from stu_work as
 		A,tea_sub as B
 		where A.problem_id=B.problem_id and user_id=#{user_id}
+		order by A.problem_id
 	</select>
 	<select id="SearchAllNotDidSubInfo" resultType="com.ssm.pojo.AllSubInfo">
 		select problem_id,problem_name
@@ -20,4 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_id=#{user_id}
 		)
 	</select>
+	<insert id="AddNewSubInStuCooseSub">
+		insert into stu_choose_sub(user_id,problem_id)
+		value(#{user_id},#{problem_id})
+	</insert>
+	<insert id="AddNewSubInStuWork" >
+		insert into stu_work(user_id,problem_id,language,
+		submit_code,status,submit_date,result)
+		value(#{user_id},#{problem_id},null,null,null,"",null)
+	</insert>
+	
+	
 </mapper> 

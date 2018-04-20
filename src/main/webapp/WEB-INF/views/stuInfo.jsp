@@ -53,7 +53,76 @@ p {
 	<div class="col-md-8">
 		<div class="panel panel-success">
 			<div class="panel-heading">做题记录</div>
-			<div class="panel-body">
+
+			<div ng-app="myApp" class="panel-body">
+
+
+				<table  ng-controller="CartController" border="1">
+				<thead>
+						<tr>
+							<th class="col-md-1">题号</th>
+							<th class="col-md-1">题目名字</th>
+							<th class="col-md-1">提交时间</th>
+							<th class="col-md-1">分数</th>
+							<th class="col-md-1">操作</th>
+						</tr>
+					</thead>
+					<tr ng-repeat="item in items">
+						<td class="col-md-1">{{item.problem_id}}</td>
+						<td class="col-md-1">{{item.problem_name}}</td>
+						<td class="col-md-1">{{item.submit_date}}</td>
+						<td class="col-md-1">{{item.result}}</td>
+						<td class="col-md-1">
+								<button class="btn btn-success " type="button"
+									ng-click="detail($index)">详情</button>
+							</td>
+					</tr>
+				</table>
+
+				<script>
+					function CartController($scope) {
+						$scope.items = ${info}
+					}
+				</script>
+
+
+
+				<!--  
+				<table class="table table-striped" ng-controller="myCtrl" border="1">
+					<thead>
+						<tr>
+							<th class="col-md-1">题号</th>
+							<th class="col-md-1">题目名字</th>
+							<th class="col-md-1">提交时间</th>
+							<th class="col-md-1">分数</th>
+							<th class="col-md-1">操作</th>
+						</tr>
+					</thead>
+				
+					<tr ng-repeat="x in records">
+						<td class="col-md-1">{{x.problem_id}}</td>
+						<td class="col-md-1">{{x.problem_name}}</td>
+						<td class="col-md-1">{{x.submit_date}}</td>
+						<td class="col-md-1">{{x.result}}</td>
+						<td class="col-md-1">
+								<button class="btn btn-success " type="button"
+									ng-click="detail($index)">详情</button>
+							</td>
+					</tr>
+				</table>
+
+				<script>
+					var app = angular.module("myApp", []);
+					app.controller("myCtrl", function($scope) {
+						$scope.records = ${info}
+					});
+				</script>
+
+-->
+
+
+
+				<!--  
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -66,11 +135,11 @@ p {
 					</thead>
 					<tbody>
 						<tr ng-repeat="record in page.datas">
-							<td class="col-md-1">{{record.problem_id}}</td>
-							<td class="col-md-1">{{record.problem_name}}</td>
-							<td class="col-md-1">{{record.submit_date |
+							<td class="col-md-1">{{${info}.problem_id}}</td>
+							<td class="col-md-1">{{${info}.problem_name}}</td>
+							<td class="col-md-1">{{${info}.submit_date |
 								stringDateFormat:'yyyy-MM-dd ' }}</td>
-							<td class="col-md-1">{{record.result}}</td>
+							<td class="col-md-1">{{${info}.result}}</td>
 							<td class="col-md-1">
 								<button class="btn btn-success " type="button"
 									ng-click="detail($index)">详情</button>
@@ -78,6 +147,7 @@ p {
 						</tr>
 					</tbody>
 				</table>
+-->
 			</div>
 			<div class="panel-foot">
 				<ul class="pager">
@@ -92,7 +162,7 @@ p {
 			</div>
 		</div>
 	</div>
-
+	<a><font>${info}</font></a>
 	<!-- 详情弹出框 开始-->
 	<div class="modal fade dialog" id="detailDialog">
 		<div class="modal-dialog">
