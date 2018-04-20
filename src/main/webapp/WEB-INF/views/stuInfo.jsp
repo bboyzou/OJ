@@ -38,13 +38,15 @@ p {
 		<div class="panel panel-info">
 			<div class="panel-heading">个人信息</div>
 			<div class="panel-body">
-				<p>账号：{{userData.account}}</p>
+				<p>账号：{{${stuInfo}.id}}</p>
 				<br />
-				<p>昵称：{{userData.nickname}}</p>
+				<p>昵称：{{${stuInfo}.name}}</p>
 				<br />
+<!--  
 				<p>做过的题目：{{userData.haveDoneProblem}}</p>
 				<br />
 				<p>做对的题目：{{userData.rightProblemCount}}</p>
+-->
 				<br />
 			</div>
 		</div>
@@ -163,6 +165,7 @@ p {
 		</div>
 	</div>
 	<a><font>${info}</font></a>
+	<a><font>${stuInfo}</font></a>
 	<!-- 详情弹出框 开始-->
 	<div class="modal fade dialog" id="detailDialog">
 		<div class="modal-dialog">

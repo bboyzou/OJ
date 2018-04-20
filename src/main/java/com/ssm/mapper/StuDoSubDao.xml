@@ -11,6 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where A.problem_id=B.problem_id and user_id=#{user_id}
 		order by A.problem_id
 	</select>
+	<select id="SearchAllSubInfo" resultType="com.ssm.pojo.SubInfo">
+		select A.problem_id,A.problem_name,B.name
+		from tea_sub as A,user as B
+		where A.tid=B.id
+		order by problem_id
+	</select>
 	<select id="SearchAllNotDidSubInfo" resultType="com.ssm.pojo.AllSubInfo">
 		select problem_id,problem_name
 		from tea_sub
@@ -30,6 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		submit_code,status,submit_date,result)
 		value(#{user_id},#{problem_id},null,null,null,"",null)
 	</insert>
+	<select id="getStuInfo" resultType="com.ssm.pojo.StuInfo">
+		select id,name
+		from user
+		where id=#{user_id}
+	</select>
 	
 	
 </mapper> 

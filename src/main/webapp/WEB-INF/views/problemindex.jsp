@@ -7,6 +7,7 @@
 }
 </style>
 <div id="problemContent" ng-controller="problemCtr">
+<!--  
 	<div class="panel panel-primary">
 		<div class="panel-heading">题目搜索</div>
 		<div class="panel-body">
@@ -37,39 +38,35 @@
 			</table>
 		</div>
 	</div>
-
-	<div class="panel panel-primary">
+-->
+	
+	<div class="panel panel-success">
 		<div class="panel-heading">题目信息</div>
 		<div class="panel-body">
-			<table class="table table-striped">
+			<table class="table table-striped" ng-controller="CartController">
 				<thead>
 					<tr>
-						<th class="col-md-1">编号</th>
-						<th class="col-md-1">题目类型</th>
-						<th class="col-md-2">题目名字</th>
-						<th class="col-md-1">题目价值</th>
-						<th class="col-md-1">题目难度</th>
-						<th class="col-md-1">答对率</th>
-						<th class="col-md-3">题目标签</th>
+						<th class="col-md-1">题号</th>
+						<th class="col-md-1">题目名字</th>
+						<th class="col-md-1">布题老师</th>
 						<th class="col-md-1">操作</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="problem in page.datas">
-						<td class="col-md-1">{{problem.problemId}}</td>
-						<td class="col-md-1">{{problem.problemTypeId |
-							problemTypeFilter : allProblemType}}</td>
-						<td class="col-md-2">{{problem.problemName}}</td>
-						<td class="col-md-1">{{problem.problemValue}}</td>
-						<td class="col-md-1">{{problem.problemDifficulty}}</td>
-						<td class="col-md-1">{{problem.totalRightCount/problem.totalSubmitCount|
-							number:2}}({{problem.totalRightCount}}/{{problem.totalSubmitCount}})</td>
-						<td class="col-md-3">{{problem.problemLabel}}</td>
+					<tr  ng-repeat="item in items">
+						<td class="col-md-1">{{item.problem_id}}</td>
+						<td class="col-md-2">{{item.problem_name}}</td>
+						<td class="col-md-1">{{item.name}}</td>
 						<td class="col-md-1"><a class="btn btn-success "
 							type="button" href="#/problem/detail"
 							ng-click="jumpDetail($index)">详情</a></td>
 					</tr>
 				</tbody>
+				<script>
+					function CartController($scope) {
+						$scope.items = ${info}
+					}
+				</script>
 			</table>
 		</div>
 		<ul class="pager">
