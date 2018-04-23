@@ -34,13 +34,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="AddNewSubInStuWork" >
 		insert into stu_work(user_id,problem_id,language,
 		submit_code,status,submit_date,result)
-		value(#{user_id},#{problem_id},null,null,null,"",null)
+		value(#{user_id},#{problem_id},null,null,null,null,null)
 	</insert>
 	<select id="getStuInfo" resultType="com.ssm.pojo.StuInfo">
 		select id,name
 		from user
 		where id=#{user_id}
 	</select>
+	<select id="getSubRequire" resultType="com.ssm.pojo.SubRequire">
+		select problem_id,problem_name,content,time_lim,memory_lim
+		from tea_sub
+		where problem_id=#{problem_id}
+	</select>
+	<update id="SubmitCode">
+	update stu_work
+	set language=#{language},submit_code=#{submit_code},
+	status='Waiting',submit_date=#{submit_date},result='0'
+	where user_id=#{user_id} and problem_id=#{problem_id}
+	</update>
 	
+
 	
 </mapper> 

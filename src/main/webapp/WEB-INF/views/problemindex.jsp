@@ -49,7 +49,7 @@
 						<th class="col-md-1">题号</th>
 						<th class="col-md-1">题目名字</th>
 						<th class="col-md-1">布题老师</th>
-						<th class="col-md-1">操作</th>
+						<th class="col-md-1">选题</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,11 +57,31 @@
 						<td class="col-md-1">{{item.problem_id}}</td>
 						<td class="col-md-2">{{item.problem_name}}</td>
 						<td class="col-md-1">{{item.name}}</td>
-						<td class="col-md-1"><a class="btn btn-success "
-							type="button" href="#/problem/detail"
-							ng-click="jumpDetail($index)">详情</a></td>
+						<td class="col-md-1"><button class="btn btn-success "
+							 onclick="validate(this)">确定选择</button></td>
 					</tr>
 				</tbody>
+				<script>
+				function validate(x){
+					var b=$(x.parentNode.parentNode).find("td").eq(0).text();
+                	$.ajax({
+              		  type: 'POST',
+              		  url: 'SureChoose',
+              		  data: {
+              			problem_id:b
+              		  },
+              		  success: function(data){
+              			  if(data=="OK"){
+              				alert("提交成功");
+              			  }else if(data=="No"){
+              				alert("提交失败");
+              			  }
+              			  
+              		  }
+              		});
+				}
+				</script>
+				
 				<script>
 					function CartController($scope) {
 						$scope.items = ${info}

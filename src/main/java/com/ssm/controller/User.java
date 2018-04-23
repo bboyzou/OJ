@@ -1,6 +1,7 @@
 package com.ssm.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.alibaba.fastjson.JSONArray;
+import com.ssm.pojo.SubInfo;
+import com.ssm.service.TeaDo;
 import com.ssm.service.UserCount;
 import com.ssm.serviceimpl.UserCountImpl;
 //登陆，注册，忘记密码分发
@@ -16,6 +20,8 @@ import com.ssm.serviceimpl.UserCountImpl;
 public class User {
 	@Autowired
 	private UserCount userCount;
+	@Autowired
+	private TeaDo teaDo;
 	public User() {
 	}
 	@RequestMapping(value="/log")
@@ -26,13 +32,21 @@ public class User {
 		Map<String, String> map=new HashMap<String, String>();
 		map=userCount.ifLog(id, password);
         String myid=map.get("id");
+        String mark=map.get("mark");
         System.out.println(myid);
-        if(myid!=null){
+        if(myid!=null&&mark.equals("0")){
         	model.addAttribute("id", id);
         	return "index1";
         	//return "roleindex";
-        }else {
-        	return "fail";
+        }else if(myid!=null&&mark.equals("1")){
+        	//teacher界面
+        	List<SubInfo> subInfos=teaDo.getMySubInfo(myid);
+        	JSONArray array=(JSONArray) JSONArray.toJSON(subInfos);
+    		String info=array.toString();
+    		model.addAttribute("info",info);
+        	return "teacherindex";
+		}else{
+			return "fail";
 		}
         
     }

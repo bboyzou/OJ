@@ -6,6 +6,7 @@ import java.util.List;
 import com.ssm.pojo.AllSubInfo;
 import com.ssm.pojo.StuInfo;
 import com.ssm.pojo.SubInfo;
+import com.ssm.pojo.SubRequire;
 import com.ssm.pojo.TeaSub;
 
 public interface StuDo {
@@ -16,7 +17,8 @@ public interface StuDo {
 	//列举出所有课程
 	public List<SubInfo> getAllSubInfo();
 	//学生选课
-	public boolean AddNewSub();
+	public boolean AddNewSub(String problem_id);
 	//学生提交代码
-	public boolean SubmitCode();
+	public boolean SubmitCode(String problem_id,String language,String submit_code);
+	public SubRequire getSubRequire(String problem_id);
 }

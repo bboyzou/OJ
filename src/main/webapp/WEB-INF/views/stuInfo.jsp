@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="head.jsp"%>
+<script  src="static/jquery.min.js"></script>
 <style>
 #userContent {
 	margin: 50px;
@@ -59,8 +60,8 @@ p {
 			<div ng-app="myApp" class="panel-body">
 
 
-				<table  ng-controller="CartController" border="1">
-				<thead>
+				<table id="tb1" ng-controller="CartController" border="1">
+				    <thead>
 						<tr>
 							<th class="col-md-1">题号</th>
 							<th class="col-md-1">题目名字</th>
@@ -69,21 +70,91 @@ p {
 							<th class="col-md-1">操作</th>
 						</tr>
 					</thead>
-					<tr ng-repeat="item in items">
-						<td class="col-md-1">{{item.problem_id}}</td>
-						<td class="col-md-1">{{item.problem_name}}</td>
-						<td class="col-md-1">{{item.submit_date}}</td>
-						<td class="col-md-1">{{item.result}}</td>
-						<td class="col-md-1">
-								<button class="btn btn-success " type="button"
-									ng-click="detail($index)">详情</button>
-							</td>
+					<tr  ng-repeat="item in items">
+						<td class="col-md-1" >{{item.problem_id}}</td>
+						<td class="col-md-1" >{{item.problem_name}}</td>
+						<td class="col-md-1" >{{item.submit_date}}</td>
+						<td class="col-md-1" >{{item.result}}</td>
+						<td class="col-md-1" >
+						<button  class="btn btn-success " onclick="doclick(this)">详情
+						</button></td>
+			                <script type="text/javascript">
+			                function doclick(x){
+			                	var b=$(x.parentNode.parentNode).find("td").eq(0).text();
+			                	window.location.href="inSubmit?problem_id="+b;
+
+			                	//alert(b);
+			                	/*
+			                	$.ajax({
+			                		  type: 'POST',
+			                		  url: 'inSubmit',
+			                		  data: {
+			                			  pid:b//注意传送参数时，前后台的参数名字和类型需要一样
+			                		  },
+			                		  "dataType" : 'json',
+			                		  success: function(data){
+			                			  //alert("aaa");
+			                		  },
+			                		  dataType: 'text'
+			                		});
+			                	*/
+			                	
+			                	/*
+			                	  var xmlobj=new XMLHttpRequest();
+			                	  var parm = "id=" + b;//构造URL参数
+			                	  xmlobj.open("POST", "submit.jsp", true); //调用weather.php
+			                	  xmlobj.setRequestHeader("cache-control","no-cache");
+			                	  xmlobj.setRequestHeader("contentType","text/html;charset=uft-8") //指定发送的编码
+			                	  xmlobj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+			                	  xmlobj.onreadystatechange = StatHandler;  //判断URL调用的状态值并处理
+			                	  xmlobj.send(parm); //设置为发送给服务器数据
+                               */
+                               /*
+                               var temp = document.createElement("form");
+                               temp.action ="inSubmit";
+                               temp.method = "post";
+                               temp.style.display = "none";
+                               var opt = document.createElement("textarea");
+                               opt.name ="id";
+                               opt.value = b;
+                               // alert(opt.name)
+                               temp.appendChild(opt);
+                               document.body.appendChild(temp);
+                               temp.submit();
+                               return temp;
+                                */
+                                   /*
+				                	var myForm = document.createElement("form");  
+				                    myForm.method = "post";  
+				                    myForm.action = "inSubmit"; 
+				            
+				                    var myInput = document.createElement("input");  
+						            myInput.setAttribute("id", b);
+						  
+						            myForm.appendChild(myInput);
+				                     
+				                    document.body.appendChild(myForm);  
+				                    myForm.submit();  
+				                    document.body.removeChild(myForm); 
+				                    */
+			                  /*
+			                	var b=$(this).closest("tr").find("input[name='sid']").val()
+			                	alert(b);
+			                	var table = document.getElementById("tb1");
+			                	var id = table.rows[a].cells[1].id;
+			                	var table = document.getElementById("表格ID");
+			                	var id = table.rows[行号].cells[列号].id;
+			                    var tab=document.getElementById("tbl");
+			                    for(var i=1;i<=a;i++){ //遍历表格的行
+			                       alert(rows[i].cells[0].innerHTML);
+			                    }*/
+			                 }
+                            </script>
 					</tr>
 				</table>
-
 				<script>
 					function CartController($scope) {
-						$scope.items = ${info}
+						$scope.items = ${info};
 					}
 				</script>
 

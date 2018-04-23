@@ -4,6 +4,21 @@ public class TeaSub {
 	private String tid;
 	private String problem_id;
 	private String problem_name;
+	private String content;
+	private String time_lim;
+	private String memory_lim;
+	public String getTime_lim() {
+		return time_lim;
+	}
+	public void setTime_lim(String time_lim) {
+		this.time_lim = time_lim;
+	}
+	public String getMemory_lim() {
+		return memory_lim;
+	}
+	public void setMemory_lim(String memory_lim) {
+		this.memory_lim = memory_lim;
+	}
 	public TeaSub(){
 		
 	}
@@ -31,7 +46,6 @@ public class TeaSub {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	private String content;
 
 	
 
