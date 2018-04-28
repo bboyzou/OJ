@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.ssm.dao.TeaDoSubDao;
 import com.ssm.pojo.StuLinkSubInfo;
 import com.ssm.pojo.SubInfo;
+import com.ssm.pojo.SubRequire;
+import com.ssm.pojo.TestData;
 import com.ssm.service.TeaDo;
 @Service
 public class TeaDoImpl implements TeaDo {
@@ -52,6 +54,16 @@ public class TeaDoImpl implements TeaDo {
 		boolean flag3=teaDoSubDao.deleSubFromTeaSub(problem_id);
 		
 		return (flag1&&flag2&&flag3);
+	}
+
+	public SubRequire getMySubRequire(String problem_id) {
+		// TODO Auto-generated method stub
+		return teaDoSubDao.getMySubRequire(problem_id);
+	}
+
+	public List<TestData> getTestDataInfo(String problem_id) {
+		// TODO Auto-generated method stub
+		return teaDoSubDao.getTestDataInfo(problem_id);
 	}
 
 }

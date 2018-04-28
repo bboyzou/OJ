@@ -18,6 +18,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.ssm.pojo.AllSubInfo;
 import com.ssm.pojo.StuLinkSubInfo;
 import com.ssm.pojo.SubInfo;
+import com.ssm.pojo.SubRequire;
+import com.ssm.pojo.TestData;
 import com.ssm.service.TeaDo;
 
 @Controller
@@ -75,12 +77,12 @@ public class TeaLinkSub {
 	@RequestMapping("/teaChangeSub")
 	public String ChangeSub(String problem_id,Model model){
 		System.out.println("收到了修改题目的请求");
-//		System.out.println(problem_id);
-//		List<StuLinkSubInfo> stuLinkSubs=teaDo.getSubmitInfo(problem_id);
-//		JSONArray array=(JSONArray) JSONArray.toJSON(stuLinkSubs);
-//		String info=array.toString();
-//		System.out.println(info);
-//		model.addAttribute("info", info);
+		SubRequire subRequire=teaDo.getMySubRequire(problem_id);
+		model.addAttribute("subInfo", subRequire);
+		List<TestData> testDatas=teaDo.getTestDataInfo(problem_id);
+		JSONArray array=(JSONArray) JSONArray.toJSON(testDatas);
+		String info=array.toString();
+		model.addAttribute("testdata", info);
 		return "teachangesub";
 	}
 	

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.ssm.pojo.StuLinkSubInfo;
 import com.ssm.pojo.SubInfo;
+import com.ssm.pojo.SubRequire;
+import com.ssm.pojo.TestData;
 
 public interface TeaDoSubDao {
 	//列举出这个老师布置了的所有课程
@@ -35,7 +37,13 @@ public interface TeaDoSubDao {
 			@Param("problem_id") String problem_id);
 	
 	
+	//返回这个题目的具体信息
+	public SubRequire getMySubRequire(
+			@Param("problem_id") String problem_id);
 	
+	//返回这个题目的测试数据信息
+	public List<TestData> getTestDataInfo(
+			@Param("problem_id") String problem_id);
 	
 	
 	

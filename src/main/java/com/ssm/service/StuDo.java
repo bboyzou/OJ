@@ -20,5 +20,6 @@ public interface StuDo {
 	public boolean AddNewSub(String problem_id);
 	//学生提交代码
 	public boolean SubmitCode(String problem_id,String language,String submit_code);
+	//返回这个题目的一些具体信息
 	public SubRequire getSubRequire(String problem_id);
 }

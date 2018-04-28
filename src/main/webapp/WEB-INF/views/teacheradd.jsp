@@ -14,7 +14,7 @@
 <div id="problemContent" ng-controller="problemCtr">
 	<div class="panel panel-success">
 		<div class="panel-heading">设置题目</div>
-		<div class="panel-body" style="background-image:url('static/img/new.png')">
+		<div class="panel-body" >
 			<form action="teaAddSub" method="post">				
 					<center><div >题名</div></center>
 					<center><div><input  style="width:500px" type="text" id="problem_name" name="problem_name" /></div></center>
